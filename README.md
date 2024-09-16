@@ -61,7 +61,7 @@ To enable fcitx5 used in third party apps, such as electron based apps, we need 
 
 * Electron
 
-Adding flags to <u>**~/.config/electron-flags.conf**</u>
+Adding flags to **~/.config/electron-flags.conf**
 
 ```.conf
 --enable-wayland-ime
@@ -69,8 +69,66 @@ Adding flags to <u>**~/.config/electron-flags.conf**</u>
 
 * Visual Studio Code
 
-Adding flags to <u>**~/.config/code-flags.conf**</u>
+Adding flags to **~/.config/code-flags.conf**
 
 ```.conf
 --enable-wayland-ime
 ```
+
+### [Clipboard manager](https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/)
+
+Using `cliphist` as clipboard manager.
+
+Start by adding the following lines to hyprland config
+
+```.conf
+exec-once = wl-paste --type text --watch cliphist store # Stores only text data
+exec-once = wl-paste --type image --watch cliphist store # Stores only image data
+```
+
+To bind `cliphist` to a hotkey for rofi
+
+```.conf
+bind = SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
+```
+
+### Remote Desktop using VNC (wayvnc) with Ngrok
+
+- [wayvnc](https://github.com/any1/wayvnc)
+- [ngrok](https://ngrok.com/download)
+
+1) Install `wayvnc` from AUR
+
+```bash
+paru -S wayvnc
+```
+
+2) Encryption & Authentication (RSA-AES) 
+
+```bash
+mkdir ~/.config/wayvnc
+
+ssh-keygen -m pem -f ~/.config/wayvnc/rsa_key.pem -t rsa -N ""
+
+nvim ~/.config/wayvnc/config
+```
+
+3) Setting parameters
+
+```.conf
+use_relative_paths=true
+address=0.0.0.0
+enable_auth=true
+username=user
+password=****
+rsa_private_key_file=rsa_key.pem
+```
+
+4) Finally, setting autostart on booting
+
+```.conf
+exec-once = wayvnc 127.0.0.1 5900 &
+exec-once = ngrok tcp 127.0.0.1:5900 --log=stdout > /tmp/ngrok.log &
+```
+
+5) Now we can access hyprland from anywhere using vnc viewer
