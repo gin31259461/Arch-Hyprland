@@ -25,6 +25,19 @@ usb.generic.allowHID = "TRUE"
 mouse.vusb.enable = "TRUE"
 ```
 
+### Fix startup stuttering
+
+Add the following configuration to vmx file (make sure the vm is power off).
+
+```vmx
+sound.highPriority = "TRUE"
+```
+
+Other sound problem refer to following link
+
+- [Audio/Videao stuttering/crackling, Firefox + PipeWire in VMs](https://bbs.archlinux.org/viewtopic.php?id=280654)
+- [Pipewire: Stuttering Audio (in Virtual Machine)](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting#stuttering-audio-in-virtual-machine)
+
 ## Hyprland
 
 ### Fcitx5 (Chinese input)
@@ -92,10 +105,9 @@ To bind `cliphist` to a hotkey for rofi
 bind = SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
 ```
 
-### Remote Desktop using VNC (wayvnc) with Ngrok
+### Remote Desktop using VNC (wayvnc)
 
 - [wayvnc](https://github.com/any1/wayvnc)
-- [ngrok](https://ngrok.com/download)
 
 1) Install `wayvnc` from AUR
 
@@ -128,7 +140,6 @@ rsa_private_key_file=rsa_key.pem
 
 ```.conf
 exec-once = wayvnc 127.0.0.1 5900 &
-exec-once = ngrok tcp 127.0.0.1:5900 --log=stdout > /tmp/ngrok.log &
 ```
 
-5) Now we can access hyprland from anywhere using vnc viewer
+5) Now we can access hyprland using vnc viewer
