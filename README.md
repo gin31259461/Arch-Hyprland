@@ -1,22 +1,47 @@
 # Installation Guide for Arch Linux with Hyprland
 
-[TOC]
+<!-- markdownlint-disable -->
+
+<!-- toc -->
+
+- [Install Arch Linux and Hyprland](#install-arch-linux-and-hyprland)
+- [VMware](#vmware)
+    * [Known issues](#known-issues)
+    * [Note](#note)
+    * [Enable extra mouse actions (mouse5, mouse6)](#enable-extra-mouse-actions-mouse5-mouse6)
+    * [Fix startup stuttering](#fix-startup-stuttering)
+- [Hyprland](#hyprland)
+    * [Fcitx5 (Chinese input)](#fcitx5-chinese-input)
+        + [Setup](#setup)
+        + [Flags](#flags)
+    * [Clipboard manager](#clipboard-manager)
+    * [Remote Desktop using VNC (wayvnc)](#remote-desktop-using-vnc-wayvnc)
+
+<!-- tocstop -->
+
+<!-- markdownlint-enable -->
 
 ## Install Arch Linux and Hyprland
 
 1. [Linutil](https://github.com/ChrisTitusTech/linutil)
-Installation script for arch linux.
+
+   Installation script for arch linux.
 
 2. [JaKooLit's Arch-Hyprland](https://github.com/JaKooLit/Arch-Hyprland)
-Hyprland install script and configuration.
+
+   Installation script and configuration for hyprland.
 
 ## VMware
 
+### Known issues
+
+1. `QT` based apps may not be able to run on hyprland
+
 ### Note
 
-* enable vmware to pass battery information to guest devices.
+- enable vmware to pass battery information to guest devices.
 
-### Enable extra mouse
+### Enable extra mouse actions (mouse5, mouse6)
 
 Add the following configuration to vmx file (make sure the vm is power off).
 
@@ -50,15 +75,16 @@ Run following command to install necessary packages.
 paru -S fcitx5-im fcitx5-chewing
 ```
 
-Using hyprland to autostart fcitx5 on boot.
+Using hyprland to autostart fcitx5 on startup.
 
-```.conf
+```conf
 exec-once = fcitx5 &
 ```
 
-Adding the following setting to hyprland environment to enable fcitx5 to use.
+Adding the following setting to hyprland environment
+to enable fcitx5 be able to use.
 
-```.conf
+```conf
 env = GTK_IM_MODULE,fcitx
 env = QT_IM_MODULE,fcitx
 env = XMODIFIERS,@im=fcitx
@@ -70,21 +96,22 @@ env = SDL_IM_MODULE,fcitx
 
 #### Flags
 
-To enable fcitx5 used in third party apps, such as electron based apps, we need to add flags.
+To enable fcitx5 used in third party apps,
+such as electron based apps, we need to add flags.
 
-* Electron
+- `Electron`
 
 Adding flags to **~/.config/electron-flags.conf**
 
-```.conf
+```conf
 --enable-wayland-ime
 ```
 
-* Visual Studio Code
+- `Visual Studio Code`
 
 Adding flags to **~/.config/code-flags.conf**
 
-```.conf
+```conf
 --enable-wayland-ime
 ```
 
@@ -94,14 +121,14 @@ Using `cliphist` as clipboard manager.
 
 Start by adding the following lines to hyprland config
 
-```.conf
+```conf
 exec-once = wl-paste --type text --watch cliphist store # Stores only text data
 exec-once = wl-paste --type image --watch cliphist store # Stores only image data
 ```
 
 To bind `cliphist` to a hotkey for rofi
 
-```.conf
+```conf
 bind = SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
 ```
 
@@ -109,37 +136,37 @@ bind = SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 - [wayvnc](https://github.com/any1/wayvnc)
 
-1) Install `wayvnc` from AUR
+1. Install `wayvnc` from AUR
 
-```bash
-paru -S wayvnc
-```
+   ```bash
+   paru -S wayvnc
+   ```
 
-2) Encryption & Authentication (RSA-AES) 
+2. Encryption & Authentication (RSA-AES)
 
-```bash
-mkdir ~/.config/wayvnc
+   ```bash
+   mkdir ~/.config/wayvnc
 
-ssh-keygen -m pem -f ~/.config/wayvnc/rsa_key.pem -t rsa -N ""
+   ssh-keygen -m pem -f ~/.config/wayvnc/rsa_key.pem -t rsa -N ""
 
-nvim ~/.config/wayvnc/config
-```
+   nvim ~/.config/wayvnc/config
+   ```
 
-3) Setting parameters
+3. Setting parameters
 
-```.conf
-use_relative_paths=true
-address=0.0.0.0
-enable_auth=true
-username=user
-password=****
-rsa_private_key_file=rsa_key.pem
-```
+   ```conf
+   use_relative_paths=true
+   address=0.0.0.0
+   enable_auth=true
+   username=user
+   password=****
+   rsa_private_key_file=rsa_key.pem
+   ```
 
-4) Finally, setting autostart on booting
+4. Finally, setting autostart
 
-```.conf
-exec-once = wayvnc 127.0.0.1 5900 &
-```
+   ```conf
+   exec-once = wayvnc 127.0.0.1 5900 &
+   ```
 
-5) Now we can access hyprland using vnc viewer
+5. Now we can access hyprland using vnc viewer
