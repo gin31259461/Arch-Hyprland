@@ -11,7 +11,9 @@
     * [Enable extra mouse actions (mouse5, mouse6)](#enable-extra-mouse-actions-mouse5-mouse6)
     * [Fix startup stuttering](#fix-startup-stuttering)
 - [Hyprland](#hyprland)
-    * [Oh My Zsh + Powerlevel10k](#oh-my-zsh--powerlevel10k)
+    * [Zsh](#zsh)
+        + [Oh My Zsh + Powerlevel10k](#oh-my-zsh--powerlevel10k)
+        + [Useful CLI tools](#useful-cli-tools)
     * [Fcitx5 (Chinese input)](#fcitx5-chinese-input)
         + [Setup](#setup)
         + [Flags](#flags)
@@ -66,7 +68,9 @@ Other sound problem refer to following link
 
 ## Hyprland
 
-### Oh My Zsh + Powerlevel10k
+### Zsh
+
+#### Oh My Zsh + Powerlevel10k
 
 After installed JaKooLit's Arch-Hyprland (include oh my zsh setting)
 
@@ -87,6 +91,17 @@ After installed JaKooLit's Arch-Hyprland (include oh my zsh setting)
    ```bash
    p10k configure
    ```
+
+#### Useful CLI tools
+
+- [fzf](https://github.com/junegunn/fzf.git)
+- [fd](https://github.com/sharkdp/fd)
+- [fzf-git](https://github.com/junegunn/fzf-git.sh)
+- [bat](https://github.com/sharkdp/bat)
+- [delta](https://github.com/dandavison/delta)
+- [eza](https://github.com/eza-community/eza.git)
+- [tldr](https://github.com/tldr-pages/tldr)
+- [thefuck](https://github.com/nvbn/thefuck)
 
 ### Fcitx5 (Chinese input)
 
