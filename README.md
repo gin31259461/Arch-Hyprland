@@ -94,6 +94,11 @@ After installed JaKooLit's Arch-Hyprland (include oh my zsh setting)
 
 #### Useful CLI tools
 
+refer to:
+
+1. [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files)
+2. [7 Amazing CLI Tools You Need To Try](https://www.youtube.com/watch?v=mmqDYw9C30I&list=PLnu5gT9QrFg36OehOdECFvxFFeMHhb_07&index=13&t=92s)
+
 - [fzf](https://github.com/junegunn/fzf.git)
 - [fd](https://github.com/sharkdp/fd)
 - [fzf-git](https://github.com/junegunn/fzf-git.sh)
