@@ -11,6 +11,7 @@
     * [Enable extra mouse actions (mouse5, mouse6)](#enable-extra-mouse-actions-mouse5-mouse6)
     * [Fix startup stuttering](#fix-startup-stuttering)
 - [Hyprland](#hyprland)
+    * [Oh My Zsh + Powerlevel10k](#oh-my-zsh--powerlevel10k)
     * [Fcitx5 (Chinese input)](#fcitx5-chinese-input)
         + [Setup](#setup)
         + [Flags](#flags)
@@ -64,6 +65,28 @@ Other sound problem refer to following link
 - [Pipewire: Stuttering Audio (in Virtual Machine)](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting#stuttering-audio-in-virtual-machine)
 
 ## Hyprland
+
+### Oh My Zsh + Powerlevel10k
+
+After installed JaKooLit's Arch-Hyprland (include oh my zsh setting)
+
+1. install powerlevel10k theme
+
+   ```bash
+   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+   ```
+
+2. configure `.zshrc`
+
+   ```bash
+   ZSH_THEME="powerlevel10k/powerlevel10k"
+   ```
+
+3. configure p10k
+
+   ```bash
+   p10k configure
+   ```
 
 ### Fcitx5 (Chinese input)
 
