@@ -38,7 +38,10 @@
 
 ### Known issues
 
-1. `QT` based apps may not be able to run on hyprland
+1. some `qt` or `gtk3` based app may not be able to run on hyprland,
+   `electron` based app seems to work well so far
+2. the app not using `qt`, `gtk3`, `electron` lib
+   may also not be able to run on hyprland
 
 ### Note
 
