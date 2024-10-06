@@ -42,6 +42,10 @@
    `electron` based app seems to work well so far
 2. the app not using `qt`, `gtk3`, `electron` lib
    may also not be able to run on hyprland
+3. [`xdg-desktop-portal-hyprland`](https://aur.archlinux.org/packages/xdg-desktop-portal-hyprland-git)
+   (XDPH) may not working properly, you can try
+   [`xdg-desktop-portal-wlr`](https://aur.archlinux.org/packages/xdg-desktop-portal-wlr-git)
+   (XDPW)
 
 ### Note
 
