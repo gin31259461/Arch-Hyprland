@@ -68,7 +68,17 @@ Add the following configuration to vmx file (make sure the vm is power off).
 sound.highPriority = "TRUE"
 ```
 
-Other sound problem refer to following link
+Configure `wireplumber`
+
+```bash
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
+cd ~/.config/wireplumber/wireplumber.conf.d
+```
+
+Then make ~/.config/wireplumber/wireplumber.conf.d/50-alsa-config.conf in an editor and
+add:
+
+Other stuttering problem refer to following link:
 
 - [Audio/Videao stuttering/crackling, Firefox + PipeWire in VMs](https://bbs.archlinux.org/viewtopic.php?id=280654)
 - [Pipewire: Stuttering Audio (in Virtual Machine)](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting#stuttering-audio-in-virtual-machine)
