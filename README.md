@@ -78,6 +78,26 @@ cd ~/.config/wireplumber/wireplumber.conf.d
 Then make ~/.config/wireplumber/wireplumber.conf.d/50-alsa-config.conf in an editor and
 add:
 
+```conf
+monitor.alsa.rules = [
+  {
+    matches = [
+      # This matches the value of the 'node.name' property of the node.
+      {
+        node.name = "~alsa_output.*"
+      }
+    ]
+    actions = {
+      # Apply all the desired node specific settings here.
+      update-props = {
+        api.alsa.period-size   = 1024
+        api.alsa.headroom      = 8192
+      }
+    }
+  }
+]
+```
+
 Other stuttering problem refer to following link:
 
 - [Audio/Videao stuttering/crackling, Firefox + PipeWire in VMs](https://bbs.archlinux.org/viewtopic.php?id=280654)
